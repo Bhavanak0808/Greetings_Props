@@ -15,12 +15,10 @@
       background-size: cover; 
       background-position: center;
       background-repeat: no-repeat; 
-      
     }
     h1 {
       color: #074a92;
       text-align: center;
-      margin-top: px;
     }
     #functional-greeting, #class-greeting {
       margin: 60px auto;
@@ -35,21 +33,30 @@
   </style>
 </head>
 <body>
-  <br><br>
   <h1><u>Greeting from Bhavana...</u></h1>
-  <div id="functional-greeting" class="text-center">this will change</div>
+  <div id="functional-greeting" class="text-center"></div>
+  <div id="class-greeting" class="text-center"></div>
 
   <script type="text/babel">
-    // Functional Component (Greetings)
     function Greetings({ name }) {
       return (
         <h2>Hello, {name}..!</h2>
-
       );
     }
-    // Render Functional Greeting
+
+    class ClassGreetings extends React.Component {
+      render() {
+        return (
+          <h2>Hello, {this.props.name}..!</h2>
+        );
+      }
+    }
+
     const rootNodeFunctional = ReactDOM.createRoot(document.getElementById("functional-greeting"));
     rootNodeFunctional.render(<Greetings name="KMIT" />);  // Pass name prop
+
+    const rootNodeClass = ReactDOM.createRoot(document.getElementById("class-greeting"));
+    rootNodeClass.render(<ClassGreetings name="i-connectresources" />);  // Pass name prop
   </script>
 </body>
 </html>
